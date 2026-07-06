@@ -194,3 +194,31 @@ Contributions welcome! Please ensure:
 - Benford, F. (1938) "The Law of Anomalous Numbers"
 - Stellar Horizon API: https://developers.stellar.org/api/horizon
 - Soroban Contracts: https://soroban.stellar.org/docs
+
+## Production Deployment
+
+### Environment Setup
+
+Set these environment variables before deployment:
+
+```bash
+export HORIZON_API_URL=https://horizon.stellar.org
+export SOROBAN_RPC_URL=https://soroban-mainnet.stellar.org
+export ARGUSCHAIN_DB_PATH=/var/lib/arguschain/scores.db
+export MODEL_DIR=/var/lib/arguschain/models
+```
+
+### Running as Service
+
+Use systemd to run ArgusChain as a service:
+
+```bash
+[Unit]
+Description=ArgusChain Detection Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /opt/arguschain/run_pipeline.py
+Restart=on-failure
+```
