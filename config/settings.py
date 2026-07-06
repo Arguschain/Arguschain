@@ -45,12 +45,20 @@ class Settings(BaseSettings):
     # Drift
     PSI_THRESHOLD: float = 0.20
     FEATURE_ARCHIVE_CUTOFF_DAYS: int = 30
+    FEATURE_ARCHIVE_DIR: str = "./data/feature_archive"
+
+    # Soroban Circuit Breaker
+    SOROBAN_CIRCUIT_BREAKER_THRESHOLD: int = 5
+
+    # ZK Prover
+    ZK_PROVER_BINARY_PATH: str = "./bin/zk_prover"
 
     # Logging
     LOG_LEVEL: str = "INFO"
 
     class Config:
         env_file = ".env"
+        extra = "ignore"
 
 
 @lru_cache()
