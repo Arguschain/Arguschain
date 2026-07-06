@@ -1,0 +1,1 @@
+"""Full detection pipeline."""
