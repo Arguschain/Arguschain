@@ -65,3 +65,8 @@ class Settings(BaseSettings):
 def get_settings() -> Settings:
     """Get cached settings instance."""
     return Settings()
+
+# Extended configuration for streaming
+STREAM_CHECKPOINT_INTERVAL = 100
+STREAM_QUEUE_DEPTH = 1000
+STREAM_OVERFLOW_STRATEGY = "block"
